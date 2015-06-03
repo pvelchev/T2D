@@ -4,7 +4,7 @@
 <title>Take me to dinner &copy Kenobisoft</title>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <script type="text/javascript" src="phonegap.js"></script>
-<link rel="stylesheet" href="www/css/query.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="www/css/jquery.mobile-1.4.5.min.css" />
 <script src="www/js/jquery.min.js"></script>
 <script src="www/js/jquery.mobile-1.4.5.min.js"></script>
 </head>
@@ -15,8 +15,9 @@
 <div data-role="footer" data-position="fixed">
 <div data-role="navbar">
 	<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="map.html"  class="ui-btn-active">Map</a></li>
+		<li><a href="home.html" data-theme="b" class="ui-btn-icon-left ui-icon-home">Home</a></li>
+		<li><a href="index.html"  data-theme="b" class="ui-btn-active ui-btn-icon-left ui-icon-location">Map</a></li>
+		<li><a href="#"  data-theme="b" onclick="exitApp()" class="ui-btn-icon-left ui-icon-power" >Exit</a></li>
 	</ul>
 </div>
 </div>
