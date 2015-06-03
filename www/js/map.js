@@ -8,7 +8,7 @@ function onMapLoad() {
 		fileref.setAttribute("type","text/javascript");
 		fileref.setAttribute("src","http://maps.googleapis.com/maps/api/js?v=3&language=en&sensor=false&key=AIzaSyC3Lfqf-IDLFPgwO4kIU2o2VVar--TZI7c&callback=getGeolocation");
 		document.getElementsByTagName("head")[0].appendChild(fileref);
-		$('#map_canvas').height($(window).height() - $('#footer').height()-2);
+		$('#map_canvas').height($(window).height() - $('#footer').height()-20);
 	} else {
 		alert("Must be connected to the Internet");
 	}
@@ -38,4 +38,8 @@ function loadMap(position) {
 
 function geoError(error) {
 	alert('code: ' + error.code + '\nmessage: ' + error.message + '\n');
+}
+
+function exitApp(){
+	navigator.app.exitApp();
 }
