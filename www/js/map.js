@@ -39,3 +39,7 @@ function loadMap(position) {
 function geoError(error) {
 	alert('code: ' + error.code + '\nmessage: ' + error.message + '\n');
 }
+
+function exitApp(){
+	navigator.app.exitApp();
+}
