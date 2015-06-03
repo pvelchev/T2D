@@ -16,9 +16,9 @@ function onMapLoad() {
 function getGeolocation() {
 	// get the user's gps coordinates and display map
 	var options = {
-		maximumAge: 3000,
-		timeout: 5000,
-		enableHighAccuracy: true
+			maximumAge: 3000,
+			timeout: 5000,
+			enableHighAccuracy: true
 		};
 	navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
 }
@@ -41,5 +41,6 @@ function geoError(error) {
 }
 
 function exitApp(){
+	if (confirm("Are you sure to exit?"))
 	navigator.app.exitApp();
 }
