@@ -2,6 +2,7 @@ $(document).bind("pageload", onMapLoad);
 $(window).bind("load", onMapLoad);
 var isConnected = true;
 function onMapLoad() {
+	navigator.splashscreen.show();
 	if (isConnected) {
 		// load the google api
 		var fileref=document.createElement('script');
@@ -16,9 +17,9 @@ function onMapLoad() {
 function getGeolocation() {
 	// get the user's gps coordinates and display map
 	var options = {
-		maximumAge: 3000,
-		timeout: 5000,
-		enableHighAccuracy: true
+			maximumAge: 3000,
+			timeout: 5000,
+			enableHighAccuracy: true
 		};
 	navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
 }
@@ -34,6 +35,7 @@ function loadMap(position) {
 	var mapObj = document.getElementById("map_canvas");
 	var map = new google.maps.Map(mapObj, myOptions);
 	var marker = new google.maps.Marker({position: latlng,map: map,title:"You"});
+	navigator.splashscreen.hide();
 }
 
 function geoError(error) {
@@ -41,5 +43,6 @@ function geoError(error) {
 }
 
 function exitApp(){
+	if (confirm("Are you sure to exit?"))
 	navigator.app.exitApp();
 }
