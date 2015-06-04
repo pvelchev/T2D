@@ -34,6 +34,7 @@ function loadMap(position) {
 	var mapObj = document.getElementById("map_canvas");
 	var map = new google.maps.Map(mapObj, myOptions);
 	var marker = new google.maps.Marker({position: latlng,map: map,title:"You"});
+	navigator.splashscreen.hide();
 }
 
 function geoError(error) {
