@@ -8,7 +8,6 @@
         Kenobisoft
     </author>
     <icon src="www/img/logo.png" />
-	<gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:splash src="splash.png" />
 	<preference name=”auto-hide-splash-screen” value=”false” />
     <content src="index.html" />
