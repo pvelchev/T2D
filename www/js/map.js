@@ -1,27 +1,26 @@
-//$(window).bind("load", onMapLoad);
+$(window).bind("load", onDeviceReady);
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-        document.addEventListener("backbutton", function (e) {
-            e.preventDefault();
-        }, false );
+	document.addEventListener("backbutton", function (e) {
+        if($.mobile.activePage.is('#login_page')){
+			e.preventDefault();
+		}
+		else {
+			if (confirm("Are you sure you want to logout?")) {
+            /* Here is where my AJAX code for logging off goes */
+			}
+			else {
+				return false;
+			}
+		}
+        }, 
+		false );
 		onMapLoad();
 }
 
 var isConnected = true;
 function onMapLoad() {
-	if($.mobile.activePage.is('#login_page')){
-        e.preventDefault();
-    }
-    else {
-        if (confirm("Are you sure you want to logout?")) {
-            /* Here is where my AJAX code for logging off goes */
-        }
-        else {
-            return false;
-        }
-    }, 
-	false );
-	
+
 	if (isConnected) {
 		// load the google api
 		var fileref=document.createElement('script');
