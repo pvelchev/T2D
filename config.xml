@@ -9,7 +9,6 @@
     </author>
     <icon src="www/img/logo.png" />
 	<gap:plugin name="org.apache.cordova.splashscreen" />
-	<preference name="SplashScreen" value="screen"/>
 	<gap:splash src="splash.png" />
 	<preference name=”auto-hide-splash-screen” value=”false” />
     <content src="index.html" />
