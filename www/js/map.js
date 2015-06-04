@@ -1,7 +1,21 @@
-$(document).bind("pageload", onMapLoad);
-$(window).bind("load", onMapLoad);
+//$(window).bind("load", onMapLoad);
+document.addEventListener("deviceready", onMapLoad, false);
+
 var isConnected = true;
 function onMapLoad() {
+	if($.mobile.activePage.is('#login_page')){
+        e.preventDefault();
+    }
+    else {
+        if (confirm("Are you sure you want to logout?")) {
+            /* Here is where my AJAX code for logging off goes */
+        }
+        else {
+            return false;
+        }
+    }, 
+	false );
+	
 	if (isConnected) {
 		// load the google api
 		var fileref=document.createElement('script');
@@ -17,13 +31,14 @@ function getGeolocation() {
 	// get the user's gps coordinates and display map
 	var options = {
 			maximumAge: 3000,
-			timeout: 5000,
+			timeout: 10000,
 			enableHighAccuracy: true
 		};
 	navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
 }
 
 function loadMap(position) {
+	$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	var latlng = new google.maps.LatLng(
 	position.coords.latitude, position.coords.longitude);
 	var myOptions = {
@@ -34,7 +49,7 @@ function loadMap(position) {
 	var mapObj = document.getElementById("map_canvas");
 	var map = new google.maps.Map(mapObj, myOptions);
 	var marker = new google.maps.Marker({position: latlng,map: map,title:"You"});
-	$.mobile.changePage("#map", "fade");
+	
 }
 
 function geoError(error) {
