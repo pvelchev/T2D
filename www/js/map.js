@@ -1,5 +1,11 @@
 //$(window).bind("load", onMapLoad);
-document.addEventListener("deviceready", onMapLoad, false);
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+        document.addEventListener("backbutton", function (e) {
+            e.preventDefault();
+        }, false );
+		onMapLoad();
+}
 
 var isConnected = true;
 function onMapLoad() {
