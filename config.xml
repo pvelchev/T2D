@@ -8,6 +8,8 @@
         Kenobisoft
     </author>
     <icon src="www/img/logo.png" />
+	<preference name="SplashScreen" value="screen.png" />
+	<preference name="SplashScreenDelay" value="10000" />
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
