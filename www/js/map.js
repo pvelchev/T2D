@@ -33,7 +33,6 @@ function onMapLoad() {
 		fileref.setAttribute("type","text/javascript");
 		fileref.setAttribute("src","http://maps.googleapis.com/maps/api/js?v=3&language=en&sensor=false&key=AIzaSyC3Lfqf-IDLFPgwO4kIU2o2VVar--TZI7c&callback=getGeolocation");
 		document.getElementsByTagName("head")[0].appendChild(fileref);
-		$('#map_canvas').height($(window).height() - $('#footer').height()-20);
 		$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	} else {
 		alert("Must be connected to the Internet");
@@ -50,6 +49,7 @@ function getGeolocation() {
 }
 
 function loadMap(position) {
+	$('#map_canvas').height($(window).height() - $('#footer').height()-20);
 	var latlng = new google.maps.LatLng(
 	position.coords.latitude, position.coords.longitude);
 	var myOptions = {
@@ -59,7 +59,7 @@ function loadMap(position) {
 		};
 	var mapObj = document.getElementById("map_canvas");
 	var map = new google.maps.Map(mapObj, myOptions);
-	var marker = new google.maps.Marker({position: latlng,map: map,title:"You"});
+	var marker = new google.maps.Marker({position: latlng,map: map,title:"You are here, may be."});
 	
 }
 
