@@ -1,13 +1,20 @@
 $(window).bind("load", onDeviceReady);
 document.addEventListener("deviceready", onDeviceReady, false);
+
+$('#map').live('pageshow',function(event, ui){
+    getGeolocation();
+});
+
+var isConnected = false;
 function onDeviceReady() {
+	isConnected = true;
 	document.addEventListener("backbutton", function (e) {
         if($.mobile.activePage.is('#login_page')){
 			e.preventDefault();
 		}
 		else {
-			if (confirm("Are you sure you want to logout?")) {
-            /* Here is where my AJAX code for logging off goes */
+			if (confirm("Are you sure you want to exit?")) {
+				navigator.app.exitApp();
 			}
 			else {
 				return false;
@@ -18,9 +25,8 @@ function onDeviceReady() {
 		onMapLoad();
 }
 
-var isConnected = true;
-function onMapLoad() {
 
+function onMapLoad() {
 	if (isConnected) {
 		// load the google api
 		var fileref=document.createElement('script');
@@ -28,6 +34,7 @@ function onMapLoad() {
 		fileref.setAttribute("src","http://maps.googleapis.com/maps/api/js?v=3&language=en&sensor=false&key=AIzaSyC3Lfqf-IDLFPgwO4kIU2o2VVar--TZI7c&callback=getGeolocation");
 		document.getElementsByTagName("head")[0].appendChild(fileref);
 		$('#map_canvas').height($(window).height() - $('#footer').height()-20);
+		$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	} else {
 		alert("Must be connected to the Internet");
 	}
@@ -43,7 +50,6 @@ function getGeolocation() {
 }
 
 function loadMap(position) {
-	$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	var latlng = new google.maps.LatLng(
 	position.coords.latitude, position.coords.longitude);
 	var myOptions = {
@@ -62,6 +68,6 @@ function geoError(error) {
 }
 
 function exitApp(){
-	if (confirm("Are you sure to exit?"))
+	if (confirm("Are you sure you want to exit?"))
 	navigator.app.exitApp();
 }
