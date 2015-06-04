@@ -1,9 +1,7 @@
-$(window).bind("load", onDeviceReady);
+// $(window).bind("load", onDeviceReady);
 document.addEventListener("deviceready", onDeviceReady, false);
 
-$('#map').live('pageshow',function(event, ui){
-    getGeolocation();
-});
+$('#map').bind('pageshow',function(event, ui){ getGeolocation();} );
 
 var isConnected = false;
 function onDeviceReady() {
@@ -33,10 +31,10 @@ function onMapLoad() {
 		fileref.setAttribute("type","text/javascript");
 		fileref.setAttribute("src","http://maps.googleapis.com/maps/api/js?v=3&language=en&sensor=false&key=AIzaSyC3Lfqf-IDLFPgwO4kIU2o2VVar--TZI7c&callback=getGeolocation");
 		document.getElementsByTagName("head")[0].appendChild(fileref);
-		$.mobile.changePage("#map", { transition: "fade", changeHash: true });
-	} else {
-		alert("Must be connected to the Internet");
-	}
+		} 
+		else {
+			alert("Must be connected to the Internet");
+		}
 }
 function getGeolocation() {
 	// get the user's gps coordinates and display map
@@ -45,6 +43,7 @@ function getGeolocation() {
 			timeout: 10000,
 			enableHighAccuracy: true
 		};
+	$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
 }
 
