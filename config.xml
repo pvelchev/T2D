@@ -2,7 +2,7 @@
 <widget id="com.example.hello" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Take Me To Diner</name>
     <description>
-        A sample Apache Cordova application to test if works for me.
+        Mobile app for Take Me to dinner site.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Kenobisoft
