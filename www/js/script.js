@@ -68,10 +68,10 @@ function exitApp(){
 	$(active).removeClass('ui-btn-active');
 	$( act_page +'#exit_btn').addClass('ui-btn-active');
 	if (confirm("Are you sure you want to exit?")) navigator.app.exitApp();
-	
-	$(act_page+'#exit_btn').removeClass('ui-btn-active');
-	$(active).addClass('ui-btn-active');
-	
+	else {
+		$(act_page+'#exit_btn').removeClass('ui-btn-active');
+		$(active).addClass('ui-btn-active');
+	}
 }
 
 /***********************
