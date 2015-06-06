@@ -1,4 +1,4 @@
-$(window).bind("load", onDeviceReady);
+//$(window).bind("load", onDeviceReady);
 document.addEventListener("deviceready", onDeviceReady, false);
 
 $('#map').bind('pageshow',function(event, ui){ getGeolocation();} );
