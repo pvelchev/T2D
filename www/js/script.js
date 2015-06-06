@@ -43,8 +43,8 @@ function getGeolocation() {
 }
 
 function loadMap(position) {
-	$.mobile.changePage("#map", { transition: "fade", changeHash: true });
-	navigator.splashscreen.hide();
+	//$.mobile.changePage("#map", { transition: "fade", changeHash: true });
+	//navigator.splashscreen.hide();
 	$('#map_canvas').height($(window).height() - $('#footer').height()-20);
 	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var myOptions = {
