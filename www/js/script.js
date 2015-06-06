@@ -7,13 +7,7 @@ var isConnected = false;
 function onDeviceReady() {
 	isConnected = true;
 	document.addEventListener("backbutton", function (e) {
-        if($.mobile.activePage.is('#login_page')){
-			e.preventDefault();
-		}
-		else {
-			exitApp()
-		}
-
+        alert('Please use Exit button to lose application');
 	},
 	false );
 	onMapLoad();
