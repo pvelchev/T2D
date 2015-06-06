@@ -1,4 +1,4 @@
-//$(window).bind("load", onDeviceReady);
+$(window).bind("load", onDeviceReady);
 document.addEventListener("deviceready", onDeviceReady, false);
 
 $('#map').bind('pageshow',function(event, ui){ getGeolocation();} );
@@ -39,14 +39,13 @@ function getGeolocation() {
 			timeout: 10000,
 			enableHighAccuracy: true
 		};
-	$.mobile.changePage("#map", { transition: "fade", changeHash: true });
+	//$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
 }
 
 function loadMap(position) {
 	$('#map_canvas').height($(window).height() - $('#footer').height()-20);
-	var latlng = new google.maps.LatLng(
-	position.coords.latitude, position.coords.longitude);
+	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var myOptions = {
 		zoom: 17,
 		center: latlng,
@@ -133,3 +132,4 @@ function ajaxLoader (el, options) {
 			});
 		}	
 	}
+}
