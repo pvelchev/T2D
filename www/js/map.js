@@ -39,11 +39,12 @@ function getGeolocation() {
 			timeout: 10000,
 			enableHighAccuracy: true
 		};
-	//$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
 }
 
 function loadMap(position) {
+	navigator.splashscreen.hide();
+	$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	$('#map_canvas').height($(window).height() - $('#footer').height()-20);
 	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var myOptions = {
