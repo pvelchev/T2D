@@ -61,7 +61,7 @@ function exitApp(){
 	var active = $(act_page+'.ui-btn-active');
 	$(active).removeClass('ui-btn-active');
 	$( act_page +'#exit_btn').addClass('ui-btn-active');
-	if (confirm("Are you sure you want to exit?")) doExit();
+	if (confirm("Are you sure you want to exit?")) return doExit();
 	else {
 		$(act_page+'#exit_btn').removeClass('ui-btn-active');
 		$(active).addClass('ui-btn-active');
@@ -69,8 +69,9 @@ function exitApp(){
 }
 
 function doExit(){
-	if(navigator.app){navigator.app.exitApp();}
-	if(navigator.device){navigator.device.exitApp();}
+	if(navigator.app){navigator.app.exitApp(); return true;}
+	if(navigator.device){navigator.device.exitApp(); return true;}
+	return false;
 }
 
 /***********************
