@@ -25,6 +25,8 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+	<preference name="fullscreen" value="false" />
+	<activity android:theme="@android:style/Theme.NoTitleBar.Fullscreen" ></activity>
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
