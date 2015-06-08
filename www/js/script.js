@@ -4,7 +4,7 @@ function check_conection(){
 	isConnected = navigator.onLine ? true : false;
 	if (!isConnected && to_alert) { to_alert=false;  alert("You are not connected to Internet");}
 	if (isConnected && !to_alert) { to_alert=true;   alert("You are now connected to Internet");}
-	setInterval(check_conection, 2000);
+	//setInterval(check_conection, 2000);
 }
 
 var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
@@ -75,7 +75,7 @@ function exitApp(){
 	var active = $(act_page+'.ui-btn-active');
 	$(active).removeClass('ui-btn-active');
 	$( act_page +'#exit_btn').addClass('ui-btn-active');
-	if (confirm("Are you sure you want to exit?"))  navigator.app.exitApp();;
+	if (confirm("Are you sure you want to exit?"))  navigator.app.exitApp();
 	else {
 		$(act_page+'#exit_btn').removeClass('ui-btn-active');
 		$(active).addClass('ui-btn-active');
