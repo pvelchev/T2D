@@ -1,15 +1,29 @@
-//$(window).bind("load", onDeviceReady);
-document.addEventListener("deviceready", onDeviceReady, false);
+var isConnected = false;
+var to_alert = true;
+function check_conection(){ 
+	isConnected = navigator.onLine ? true : false;
+	if (!isConnected && to_alert) { to_alert=false;  alert("You are not connected to Internet");}
+	if (isConnected && !to_alert) { to_alert=true;   alert("You are now connected to Internet");}
+	setInterval(check_conection, 2000);
+}
+
+var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+if ( app ) {
+    // PhoneGap application
+	document.addEventListener("deviceready", onDeviceReady, false);
+} else {
+    // Web page
+	$(window).bind("load", onDeviceReady);
+}
 
 $('#map').bind('pageshow',function(event, ui){ getGeolocation();} );
 
-var isConnected = false;
 function onDeviceReady() {
-	isConnected = true;
 	document.addEventListener("backbutton", function (e) {
         alert('Please use Exit button to lose application');
 	},
 	false );
+	check_conection();
 	onMapLoad();
 }
 
