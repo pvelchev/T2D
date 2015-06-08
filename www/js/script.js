@@ -52,7 +52,6 @@ function getGeolocation() {
 
 function loadMap(position) {
 	//$.mobile.changePage("#map", { transition: "fade", changeHash: true });
-	//navigator.splashscreen.hide();
 	$('#map_canvas').height($(window).height() - $('#footer').height()-20);
 	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var myOptions = {
@@ -63,7 +62,7 @@ function loadMap(position) {
 	var mapObj = document.getElementById("map_canvas");
 	var map = new google.maps.Map(mapObj, myOptions);
 	var marker = new google.maps.Marker({position: latlng,map: map,title:"You are here, may be."});
-	
+	navigator.splashscreen.hide();
 }
 
 function geoError(error) {
