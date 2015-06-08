@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget 
-	id="com.example.hello" 
-	version="0.0.1" 
-	xmlns="http://www.w3.org/ns/widgets" 
-	xmlns:cdv="http://cordova.apache.org/ns/1.0"
+	id = "com.example.hello" 
+	version ="0.0.1" 
+	xmlns     = "http://www.w3.org/ns/widgets" 
+	xmlns:cdv = "http://cordova.apache.org/ns/1.0"
 	xmlns:gap = "http://phonegap.com/ns/1.0"
-	>
+>
     <name>Take Me To Diner</name>
     <description>
         Mobile app for Take Me to dinner site.
@@ -16,7 +16,8 @@
     <icon src="www/img/logo.png" />
 	<gap:splash src="splash.9.png" />
     <content src="index.html" />
-	<preference name="fullscreen" value="true" />
+	<preference name="SplashScreenDelay" value="5000" />
+    <preference name="FullScreen" value="true" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
