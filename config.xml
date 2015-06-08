@@ -14,9 +14,12 @@
         Kenobisoft
     </author>
     <icon src="www/img/logo.png" />
-	<gap:splash src="splash.9.png" />
+	<gap:splash src="splash.png" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:density="ldpi" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:density="mdpi" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:density="hdpi" />
     <content src="index.html" />
-	<preference name="SplashScreen" value="splash.9.png" />
+	<preference name="SplashScreen" value="splash.png" />
 	<preference name="SplashScreenDelay" value="5000" />
     <preference name="FullScreen" value="true" />
     <plugin name="cordova-plugin-whitelist" version="1" />
