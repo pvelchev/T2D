@@ -22,6 +22,7 @@
 	<preference name="SplashScreen" value="splash.png" />
 	<preference name="SplashScreenDelay" value="5000"/>
     <preference name="FullScreen" value="true" />
+	<preference name="keepRunning" value="false" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
