@@ -72,7 +72,7 @@ function getGeolocation() {
 			timeout: 10000,
 			enableHighAccuracy: false
 	};
-	alert(address_source);
+
 	if (address_source == 'useGPS') navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
 	else {
 		var geocoder = new google.maps.Geocoder(); 
