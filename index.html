@@ -10,8 +10,12 @@
 
 <script src="www/js/jquery.min.js"></script>
 <script src="www/js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=places&amp;key=AIzaSyC3Lfqf-IDLFPgwO4kIU2o2VVar--TZI7c"></script>
+<style>
+label{display:block;clear:both;}
+</style>
 </head>
-<body>
+<body >
 <!---
 <div data-role="page" id="splash" style="width:100%; height:100%;">   
         <div class="splash" style="width:100%; height:80%;background:#000 url(www/img/splash.png) no-repeat center; background-size:contain;">
@@ -34,11 +38,46 @@
 </div>
 
 
-<div data-role="page" id="search" style="background:#000;">
-	<div data-role="header">
-		<h1>Take me to diner</h1>
-		<h3>Search conditions</h3>
+<div  data-role="page" id="search" style="text-align:center;background:#555555;color:#FFF">
+	<div data-role="header" data-theme="b">
+		<h1>Settings</h1>
 	</div>
+<form>
+<div style="width:70%;margin:0 auto;text-align:left">
+	<div class="ui-field-contain">
+    <label for="language">Select language:</label>
+		<select data-theme="b" name="language" id="language" data-native-menu="false" onchange="localStorage.setItem('language',$(this).val())">
+			<option value="en">English</option>
+			<option value="nl">Dutch</option>
+			<option value="de">German</option>
+			<option value="fr">French</option>
+		</select>
+	</div>
+	<div class="ui-field-contain">
+    <fieldset data-role="controlgroup" data-type="horizontal" style="width:100%">
+		<legend>How to get your position:</legend>
+		<label for="useGPS">By GPS</label>
+		<input data-theme="b" onclick="$('#address_div').fadeOut();localStorage.setItem('address_source','useGPS');window.address_source='useGPS';new_location=true;" name="address_source" id="useGPS" type="radio" value="useGPS">
+		<label for="useAddress">By address</label>
+		<input data-theme="b" onclick="$('#address_div').fadeIn();localStorage.setItem('address_source','useAddress');window.address_source='useAddress';new_location=true;" name="address_source" id="useAddress" type="radio" value="useAddress">
+    </fieldset>
+	</div>
+	<div id="address_div" style="display:none" class="ui-field-contain">
+		<label for="address">Enter address here</label>
+		<textarea data-theme="b" name="address" id="address" onchange="new_location=true"></textarea>
+	</div>
+	
+	<div id="distance_div" class="ui-field-contain">
+		<label for="distance">Distance:</label>
+		<input data-theme="b" name="distance" id="distance"  min="0" max="100" type="range">
+	</div>
+	
+	<div id="price_div" class="ui-field-contain">
+        <label for="price">Price:</label>
+        <input  data-theme="b" name="price" id="price" min="0" max="100"  type="range">
+	</div>
+</div>
+</form>
   
 	<div data-role="footer" data-position="fixed">
 	  <div data-role="navbar">
@@ -56,7 +95,5 @@
 
 
 <script type="text/javascript" charset="utf-8" src="www/js/script.js"></script>
-</div>
-
 </body>
 </html>

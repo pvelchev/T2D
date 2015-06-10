@@ -2,9 +2,8 @@ var isConnected = false;
 var to_alert = true;
 function check_conection(){ 
 	isConnected = navigator.onLine ? true : false;
-	if (!isConnected && to_alert) { to_alert=false;  alert("You are not connected to Internet");}
+	if (!isConnected && to_alert) { to_alert=false;  alert("You are NOT connected to Internet");}
 	if (isConnected && !to_alert) { to_alert=true;   alert("You are now connected to Internet");}
-	//setInterval(check_conection, 2000);
 }
 
 var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
@@ -16,44 +15,85 @@ if ( app ) {
 	$(window).bind("load", onDeviceReady);
 }
 
-$('#map').bind('pageshow',function(event, ui){ getGeolocation();} );
+$('#map').bind('pageshow',function(event, ui){ try_to_getGeolocation();} );
+
+var new_location=false;
+function try_to_getGeolocation(){
+	if (new_location)  onMapLoad();
+}
 
 function onDeviceReady() {
 	document.addEventListener("backbutton", function (e) {
-        alert('Please use Exit button to lose application');
+        alert('Please use Exit button to close application');
 	},
 	false );
+	
+	init_search();
 	check_conection();
 	onMapLoad();
 }
+var address, address_source,distance,price1,price2,language;
 
+function init_search(){
+	$('#address').change(function(){ localStorage.setItem("address",$(this).val());});
+	address=localStorage.getItem("address");
+	$('#address').val(address);
+	
+	language = localStorage.getItem('language');
+	if (typeof language == 'undefined' ) {language = 'en'; localStorage.setItem('language','en'); }
+	$('#language').val(language);
+
+	address_source = localStorage.getItem("address_source");
+	if (typeof address_source == 'undefined' ) {address_source = 'useGPS'; localStorage.setItem('address_source','useGPS'); }
+	$('#'+address_source).click();
+	
+	$('#search').page();
+	$('#distance').change(function(){ localStorage.setItem("distance",$(this).val());});
+	distance = localStorage.getItem("distance");
+	if (typeof distance == 'undefined' ) {distance = 50 ; localStorage.setItem('distance',distance); }
+	$('#distance').val(distance).slider('refresh');
+
+	$('#price').change(function(){ localStorage.setItem("price",$(this).val());});
+	price = localStorage.getItem("price");
+	if (typeof price == 'undefined' ) {price = 40 ; localStorage.setItem('price',price); }
+	$('#price').val(price).slider('refresh');
+	
+}
 
 function onMapLoad() {
-	if (isConnected) {
-		// load the google api
-		var fileref=document.createElement('script');
-		fileref.setAttribute("type","text/javascript");
-		fileref.setAttribute("src","http://maps.googleapis.com/maps/api/js?v=3&language=en&sensor=false&key=AIzaSyC3Lfqf-IDLFPgwO4kIU2o2VVar--TZI7c&callback=getGeolocation");
-		document.getElementsByTagName("head")[0].appendChild(fileref);
-		} 
-		else {
-			alert("Must be connected to the Internet");
-		}
+	if (isConnected) getGeolocation() ;
+	else	alert("Must be connected to the Internet");
 }
+
 function getGeolocation() {
 	// get the user's gps coordinates and display map
 	var options = {
 			maximumAge: 3000,
 			timeout: 10000,
-			enableHighAccuracy: true
-		};
-	navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
+			enableHighAccuracy: false
+	};
+	alert(address_source);
+	if (address_source == 'useGPS') navigator.geolocation.getCurrentPosition(loadMap,geoError, options);
+	else {
+		var geocoder = new google.maps.Geocoder(); 
+		geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				loadMap1(results[0].geometry.location);
+			}
+			else  alert("Geocode was not successful for the following reason: " + status);
+		});
+	}
 }
 
-function loadMap(position) {
+
+function loadMap(position){
+	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	loadMap1(latlng);
+}
+
+function loadMap1(latlng) { 
 	//$.mobile.changePage("#map", { transition: "fade", changeHash: true });
 	$('#map_canvas').height($(window).height() - $('#footer').height()-20);
-	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var myOptions = {
 		zoom: 17,
 		center: latlng,
@@ -61,8 +101,33 @@ function loadMap(position) {
 		};
 	var mapObj = document.getElementById("map_canvas");
 	var map = new google.maps.Map(mapObj, myOptions);
-	var marker = new google.maps.Marker({position: latlng,map: map,title:"You are here, may be."});
-	navigator.splashscreen.hide();
+	var marker = new google.maps.Marker({position: latlng, map: map,title:"You are here, may be."});
+	codeLatLng(latlng);
+}
+
+var city,formatted_address;
+function codeLatLng(latlng) {
+ geocoder = new google.maps.Geocoder();
+ geocoder.geocode({
+    'latLng': latlng
+  }, function (results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      if (results[0]) {
+        formatted_address =results[0].formatted_address;
+		city = results[6].formatted_address;
+		var txt = 'Yor position was determinated ';
+		if (address_source == 'useGPS') txt=txt+ 'using GPS.';
+		else txt=txt+ 'using address provided.';
+		txt = txt+'\n Seems you are at '+formatted_address+'.';
+		txt= txt+'\nYou can change method of geolocation in settings tab.'
+		alert(txt);
+      } else {
+        alert('No results found');
+      }
+    } else {
+      alert('Geocoder failed due to: ' + status);
+    }
+  });
 }
 
 function geoError(error) {
