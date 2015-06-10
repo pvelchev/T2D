@@ -14,10 +14,13 @@
         Kenobisoft
     </author>
     <icon src="www/img/logo.png" />
-	<gap:splash src="splash.png" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="ldpi" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="mdpi" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="hdpi" />
+	<gap:splash src="splash9.png" />
+<preference name="AutoHideSplashScreen" value="false" />
+<!-- Do not auto hide splash on Android -->
+<preference name="SplashScreenDelay" value="10000"/>
+
+<gap:plugin name="org.apache.cordova.splashscreen" />
+
     <content src="index.html" />
 	<preference name="SplashScreen" value="splash.png" />
 	<preference name="SplashScreenDelay" value="5000"/>
