@@ -116,7 +116,7 @@ function codeLatLng(latlng) {
       if (results[0]) {
         formatted_address =results[0].formatted_address;
 		city = results[6].formatted_address;
-		var txt = 'Yor position was determinated ';
+		var txt = 'Your position was determinated ';
 		if (address_source == 'useGPS') txt=txt+ 'using GPS.';
 		else txt=txt+ 'using address provided.';
 		txt = txt+'\n Seems you are at '+formatted_address+'.';
