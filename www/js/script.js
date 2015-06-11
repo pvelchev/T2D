@@ -23,7 +23,7 @@ function try_to_getGeolocation(){
 }
 
 function onDeviceReady() {
-	
+	if(app) navigator.splashscreen.hide();
 	document.addEventListener("backbutton", function (e) {
         alert('Please use Exit button to close application');
 	},
@@ -67,7 +67,6 @@ function onMapLoad() {
 }
 
 function getGeolocation() {
-	if(app) navigator.splashscreen.hide();
 	// get the user's gps coordinates and display map
 	var options = {
 			maximumAge: 3000,
@@ -117,7 +116,7 @@ function codeLatLng(latlng) {
       if (results[0]) {
         formatted_address =results[0].formatted_address;
 		city = results[6].formatted_address;
-		var txt = 'Your position was determinated ';
+		var txt = 'Yor position was determinated ';
 		if (address_source == 'useGPS') txt=txt+ 'using GPS.';
 		else txt=txt+ 'using address provided.';
 		txt = txt+'\n Seems you are at '+formatted_address+'.';
@@ -157,7 +156,6 @@ function doExit(){
 /***********************
 .ajax_loader {background: url("spinner_squares_circle.gif") no-repeat center center transparent;width:100%;height:100%;}
 .blue-loader .ajax_loader {background: url("ajax-loader_blue.gif") no-repeat center center transparent;}
-
 var box2;
 $(".box-2").live('click', function(){	
 		box2 = new ajaxLoader(this, {classOveride: 'blue-loader'});
