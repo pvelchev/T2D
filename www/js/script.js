@@ -1,5 +1,6 @@
 var isConnected = false;
 var to_alert = true;
+var new_location;
 function check_conection(){ 
 	isConnected = navigator.onLine ? true : false;
 	if (!isConnected && to_alert) { to_alert=false;  alert("You are NOT connected to Internet");}
@@ -15,23 +16,22 @@ if ( app ) {
 	$(window).bind("load", onDeviceReady);
 }
 
-$('#map').bind('pageshow',function(event, ui){ try_to_getGeolocation();} );
-
-
 function try_to_getGeolocation(){
-	if (window.new_location)  onMapLoad();
+	if (window.new_location)  {window.new_location = false; onMapLoad();}
 }
 
-function onDeviceReady() {
-	window.new_location=false;
-	if(app) navigator.splashscreen.hide();
+
+function onDeviceReady() { 
+	if (app) navigator.splashscreen.hide();
 	document.addEventListener("backbutton", function (e) {
         alert('Please use Exit button to close application');
 	},
 	false );
 	
-	init_search();
+	init_search(); // this sets new_location
+	$('#map').bind('pageshow',function(event, ui){ try_to_getGeolocation();} );
 	check_conection();
+	window.new_location = false;
 	onMapLoad();
 }
 var address, address_source,distance,price1,price2,language;
@@ -141,7 +141,7 @@ function exitApp(){
 	var active = $(act_page+'.ui-btn-active');
 	$(active).removeClass('ui-btn-active');
 	$( act_page +'#exit_btn').addClass('ui-btn-active');
-	if (confirm("Are you sure you want to exit?"))  return navigator.app.exitApp();
+	if (confirm("Are you sure you want to exit?"))  return doExit();
 	else {
 		$(act_page+'#exit_btn').removeClass('ui-btn-active');
 		$(active).addClass('ui-btn-active');

@@ -29,8 +29,8 @@ label{display:block;clear:both;}
 	<div data-role="footer" data-position="fixed">
 	  <div data-role="navbar"  data-theme="b">
 		<ul>
-			<li><a href="#search" data-theme="b" class="ui-btn-icon-left ui-icon-gear">Search</a></li>
-			<li><a href="#map"  onclick="getGeolocation()" data-theme="b" class="ui-btn-active ui-state-persist ui-btn-icon-left ui-icon-location">Map</a></li>
+			<li><a href="#search" data-transition="flip" data-theme="b" class="ui-btn-icon-left ui-icon-gear">Search</a></li>
+			<li><a href="#map" data-transition="flip" onclick="getGeolocation()" data-theme="b" class="ui-btn-active ui-state-persist ui-btn-icon-left ui-icon-location">Map</a></li>
 			<li><a href="#" id="exit_btn" data-theme="b"  onclick="exitApp()" class="ui-btn-icon-left ui-icon-action" >Exit</a></li>
 		</ul>
 	  </div>
@@ -57,14 +57,16 @@ label{display:block;clear:both;}
     <fieldset data-role="controlgroup" data-type="horizontal" style="width:100%">
 		<legend>How to get your position:</legend>
 		<label for="useGPS">By GPS</label>
-		<input data-theme="b" onclick="$('#address_div').fadeOut();localStorage.setItem('address_source','useGPS');window.address_source='useGPS';new_location=true;" name="address_source" id="useGPS" type="radio" value="useGPS">
+		<input data-theme="b" onclick="$('#address_div').fadeOut();localStorage.setItem('address_source','useGPS');window.address_source='useGPS';window.new_location=true;" name="address_source" id="useGPS" type="radio" value="useGPS">
 		<label for="useAddress">By address</label>
-		<input data-theme="b" onclick="$('#address_div').fadeIn();localStorage.setItem('address_source','useAddress');window.address_source='useAddress';new_location=true;" name="address_source" id="useAddress" type="radio" value="useAddress">
+		<input data-theme="b" onclick="$('#address_div').fadeIn();localStorage.setItem('address_source','useAddress');window.address_source='useAddress';window.new_location=true;" name="address_source" id="useAddress" type="radio" value="useAddress">
     </fieldset>
 	</div>
 	<div id="address_div" style="display:none" class="ui-field-contain">
 		<label for="address">Enter address here</label>
-		<textarea data-theme="b" name="address" id="address" onchange="new_location=true"></textarea>
+		<textarea data-theme="b" name="address" id="address" 
+		 onchange="address=$(this).val();alert(address);localStorage.setItem('address_source',address);window.new_location=true">
+		 </textarea>
 	</div>
 	
 	<div id="distance_div" class="ui-field-contain">
@@ -82,8 +84,8 @@ label{display:block;clear:both;}
 	<div data-role="footer" data-position="fixed">
 	  <div data-role="navbar">
 		<ul>
-			<li><a href="#search" data-theme="b" class="ui-btn-active ui-state-persist ui-btn-icon-left ui-icon-gear">Search</a></li>
-			<li><a href="#map"  data-theme="b" class="ui-btn-icon-left ui-icon-location">Map</a></li>
+			<li><a href="#search" data-transition="flip" data-theme="b" class="ui-btn-active ui-state-persist ui-btn-icon-left ui-icon-gear">Search</a></li>
+			<li><a href="#map" data-transition="flip" data-theme="b" class="ui-btn-icon-left ui-icon-location">Map</a></li>
 			<li><a href="#"  id="exit_btn" data-theme="b" onclick="exitApp()" class="ui-btn-icon-left ui-icon-action" >Exit</a></li>
 		</ul>
 	  </div>
