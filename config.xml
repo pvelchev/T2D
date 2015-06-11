@@ -31,8 +31,14 @@
 
 	<preference name="SplashScreenDelay" value="5000"/>
     <preference name="FullScreen" value="true" />
-	<preference name="keepRunning" value="false" />
     <plugin name="cordova-plugin-whitelist" version="1" />
+	
+	<preference name="target-device" value="handset" />
+    <preference name="disallowOverscroll" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="exit-on-suspend" value="true" />
+    <preference name="KeepRunning" value="false" />
+	
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
