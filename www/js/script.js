@@ -23,7 +23,7 @@ function try_to_getGeolocation(){
 }
 
 function onDeviceReady() {
-	if(app) navigator.splashscreen.hide();
+	
 	document.addEventListener("backbutton", function (e) {
         alert('Please use Exit button to close application');
 	},
@@ -67,6 +67,7 @@ function onMapLoad() {
 }
 
 function getGeolocation() {
+	if(app) navigator.splashscreen.hide();
 	// get the user's gps coordinates and display map
 	var options = {
 			maximumAge: 3000,
@@ -116,7 +117,7 @@ function codeLatLng(latlng) {
       if (results[0]) {
         formatted_address =results[0].formatted_address;
 		city = results[6].formatted_address;
-		var txt = 'Yor position was determinated ';
+		var txt = 'Your position was determinated ';
 		if (address_source == 'useGPS') txt=txt+ 'using GPS.';
 		else txt=txt+ 'using address provided.';
 		txt = txt+'\n Seems you are at '+formatted_address+'.';
