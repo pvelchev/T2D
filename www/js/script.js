@@ -19,7 +19,7 @@ $('#map').bind('pageshow',function(event, ui){ try_to_getGeolocation();} );
 
 
 function try_to_getGeolocation(){
-	if (wimdow.new_location)  onMapLoad();
+	if (window.new_location)  onMapLoad();
 }
 
 function onDeviceReady() {
