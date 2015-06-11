@@ -29,8 +29,8 @@ label{display:block;clear:both;}
 	<div data-role="footer" data-position="fixed">
 	  <div data-role="navbar"  data-theme="b">
 		<ul>
-			<li><a href="#search" data-transition="flip" data-theme="b" class="ui-btn-icon-left ui-icon-gear">Search</a></li>
-			<li><a href="#map" data-transition="flip" onclick="getGeolocation()" data-theme="b" class="ui-btn-active ui-state-persist ui-btn-icon-left ui-icon-location">Map</a></li>
+			<li><a href="#search" data-transition="fade" data-theme="b" class="ui-btn-icon-left ui-icon-gear">Search</a></li>
+			<li><a href="#map" data-transition="fade" onclick="getGeolocation()" data-theme="b" class="ui-btn-active ui-btn-icon-left ui-icon-location">Map</a></li>
 			<li><a href="#" id="exit_btn" data-theme="b"  onclick="exitApp()" class="ui-btn-icon-left ui-icon-action" >Exit</a></li>
 		</ul>
 	  </div>
@@ -65,7 +65,7 @@ label{display:block;clear:both;}
 	<div id="address_div" style="display:none" class="ui-field-contain">
 		<label for="address">Enter address here</label>
 		<textarea data-theme="b" name="address" id="address" 
-		 onchange="address=$(this).val();alert(address);localStorage.setItem('address_source',address);window.new_location=true">
+		 onchange="address=$('#address').val();localStorage.setItem('address_source',address);window.new_location=true">
 		 </textarea>
 	</div>
 	
@@ -84,8 +84,8 @@ label{display:block;clear:both;}
 	<div data-role="footer" data-position="fixed">
 	  <div data-role="navbar">
 		<ul>
-			<li><a href="#search" data-transition="flip" data-theme="b" class="ui-btn-active ui-state-persist ui-btn-icon-left ui-icon-gear">Search</a></li>
-			<li><a href="#map" data-transition="flip" data-theme="b" class="ui-btn-icon-left ui-icon-location">Map</a></li>
+			<li><a href="#search" data-transition="fade" data-theme="b" class="ui-btn-active   ui-btn-icon-left ui-icon-gear">Search</a></li>
+			<li><a href="#map" data-transition="fade" data-theme="b" class="ui-btn-icon-left ui-icon-location">Map</a></li>
 			<li><a href="#"  id="exit_btn" data-theme="b" onclick="exitApp()" class="ui-btn-icon-left ui-icon-action" >Exit</a></li>
 		</ul>
 	  </div>

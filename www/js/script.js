@@ -136,15 +136,18 @@ function geoError(error) {
 	alert('code: ' + error.code + '\nmessage: ' + error.message + '\n');
 }
 
+
 function exitApp(){
 	var act_page = '#'+$.mobile.activePage.attr('id')+' ';
 	var active = $(act_page+'.ui-btn-active');
 	$(active).removeClass('ui-btn-active');
+	console.log(active);
 	$( act_page +'#exit_btn').addClass('ui-btn-active');
 	if (confirm("Are you sure you want to exit?"))  return doExit();
 	else {
 		$(act_page+'#exit_btn').removeClass('ui-btn-active');
 		$(active).addClass('ui-btn-active');
+		$(active).focus();
 	}
 }
 
