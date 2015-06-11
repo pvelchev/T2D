@@ -34,7 +34,7 @@
 
 <preference name="disallowOverscroll" value="true" />
 <preference name="webviewbounce" value="false" />
-<preference name="exit-on-suspend" value="true" />
+<preference name="exitOnSuspend" value="true" />
 <preference name="KeepRunning" value="false" />
 
 <access origin="*" />
