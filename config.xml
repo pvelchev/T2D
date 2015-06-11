@@ -29,9 +29,7 @@
 <preference name="FullScreen" value="true" />
 <preference name="keepRunning" value="false" />
 
-<gap:config-file platform="android" parent="/manifest">
-    <application android:theme="@android:style/Theme.NoTitleBar"></application>
-</gap:config-file>
+
 
 <gap:plugin name="org.apache.cordova.splashscreen" />
 
