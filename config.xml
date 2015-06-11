@@ -33,7 +33,6 @@
 <plugin name="cordova-plugin-whitelist" version="1" />
 
 <preference name="exitOnSuspend" value="true" />
-<preference name="KeepRunning" value="false" />
 
 <access origin="*" />
 <allow-intent href="http://*/*" />
