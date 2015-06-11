@@ -26,15 +26,16 @@
 <!-- Do not auto hide splash on Android -->
 <preference name="SplashScreenDelay" value="10000"/>
 
+<preference name="FullScreen" value="true" />
+<preference name="keepRunning" value="false" />
+
 <gap:config-file platform="android" parent="/manifest">
     <application android:theme="@android:style/Theme.NoTitleBar"></application>
 </gap:config-file>
 
 <gap:plugin name="org.apache.cordova.splashscreen" />
 
-	<preference name="SplashScreenDelay" value="5000"/>
-    <preference name="FullScreen" value="true" />
-	<preference name="keepRunning" value="false" />
+
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
