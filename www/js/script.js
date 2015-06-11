@@ -23,6 +23,7 @@ function try_to_getGeolocation(){
 }
 
 function onDeviceReady() {
+	if(app) navigator.splashscreen.hide();
 	document.addEventListener("backbutton", function (e) {
         alert('Please use Exit button to close application');
 	},

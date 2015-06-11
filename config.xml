@@ -19,6 +19,13 @@
 <gap:splash src="splash.9.png" gap:platform="android" gap:density="mdpi" />
 <gap:splash src="splash.9.png" gap:platform="android" gap:density="hdpi" />
     <content src="index.html" />
+	
+	<!-- Do not auto hide splash on iOS -->
+<preference name="AutoHideSplashScreen" value="false" />
+<!-- Do not auto hide splash on Android -->
+<preference name="SplashScreenDelay" value="10000"/>
+
+<gap:plugin name="org.apache.cordova.splashscreen" />
 
 	<preference name="SplashScreenDelay" value="5000"/>
     <preference name="FullScreen" value="true" />
