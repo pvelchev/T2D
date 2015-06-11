@@ -6,45 +6,44 @@
 	xmlns:cdv = "http://cordova.apache.org/ns/1.0"
 	xmlns:gap = "http://phonegap.com/ns/1.0"
 >
-<name>Take Me To Diner</name>
-<description>
-	Mobile app for Take Me to dinner site.
-</description>
-<author email="dev@cordova.apache.org" href="http://cordova.io">
-	Kenobisoft
-</author>
-<icon src="www/img/logo.png" />
-<gap:splash src="splash.png" />
+    <name>Take Me To Diner</name>
+    <description>
+        Mobile app for Take Me to dinner site.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Kenobisoft
+    </author>
+    <icon src="www/img/logo.png" />
+	<gap:splash src="splash.png" />
 <gap:splash src="splash.9.png" gap:platform="android" gap:density="ldpi" />
 <gap:splash src="splash.9.png" gap:platform="android" gap:density="mdpi" />
 <gap:splash src="splash.9.png" gap:platform="android" gap:density="hdpi" />
-<content src="index.html" />
-
-<!-- Do not auto hide splash on iOS -->
+    <content src="index.html" />
+	
+	<!-- Do not auto hide splash on iOS -->
 <preference name="AutoHideSplashScreen" value="false" />
-<preference name="ShowSplashScreenSpinner" value="false" />
 <!-- Do not auto hide splash on Android -->
 <preference name="SplashScreenDelay" value="10000"/>
 
-<preference name="FullScreen" value="true" />
-<preference name="keepRunning" value="false" />
+<gap:plugin name="org.apache.cordova.splashscreen" />
 
+	<preference name="SplashScreenDelay" value="5000"/>
+    <preference name="FullScreen" value="true" />
+	<preference name="keepRunning" value="false" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
 
-
-<plugin name="cordova-plugin-whitelist" version="1" />
-<access origin="*" />
-<allow-intent href="http://*/*" />
-<allow-intent href="https://*/*" />
-<allow-intent href="tel:*" />
-<allow-intent href="sms:*" />
-<allow-intent href="mailto:*" />
-<allow-intent href="geo:*" />
-
-<platform name="android">
-	<allow-intent href="market:*" />
-</platform>
-<platform name="ios">
-	<allow-intent href="itms:*" />
-	<allow-intent href="itms-apps:*" />
-</platform>
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
 </widget>
