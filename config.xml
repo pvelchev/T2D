@@ -26,9 +26,7 @@
 <preference name="SplashScreenDelay" value="10000"/>
 
 <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:config-file platform="android" parent="/manifest">
-        <application android:theme="@android:style/Theme.NoTitleBar"></application>
-    </gap:config-file>
+
 
 	<preference name="SplashScreenDelay" value="5000"/>
     <preference name="FullScreen" value="true" />
