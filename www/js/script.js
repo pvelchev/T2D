@@ -17,12 +17,13 @@ if ( app ) {
 
 $('#map').bind('pageshow',function(event, ui){ try_to_getGeolocation();} );
 
-var new_location=false;
+
 function try_to_getGeolocation(){
-	if (new_location)  onMapLoad();
+	if (wimdow.new_location)  onMapLoad();
 }
 
 function onDeviceReady() {
+	window.new_location=false;
 	if(app) navigator.splashscreen.hide();
 	document.addEventListener("backbutton", function (e) {
         alert('Please use Exit button to close application');
