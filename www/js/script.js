@@ -4,7 +4,7 @@ var new_location;
 function check_conection(){ 
 	isConnected = navigator.onLine ? true : false;
 	if (!isConnected && to_alert) { to_alert=false;  alert("You are NOT connected to Internet");}
-	if (isConnected && !to_alert) { to_alert=true;   alert("You are now connected to Internet");}
+	if (isConnected && !to_alert) { to_alert=true;   alert("You are connected to Internet");}
 }
 
 var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
@@ -22,7 +22,6 @@ function try_to_getGeolocation(){
 
 
 function onDeviceReady() { 
-	if (app) navigator.splashscreen.hide();
 	document.addEventListener("backbutton", function (e) {
         alert('Please use Exit button to close application');
 	},
@@ -95,6 +94,7 @@ function loadMap(position){
 
 function loadMap1(latlng) { 
 	//$.mobile.changePage("#map", { transition: "fade", changeHash: true });
+	if (app) navigator.splashscreen.hide();
 	$('#map_canvas').height($(window).height() - $('#footer').height()-20);
 	var myOptions = {
 		zoom: 17,
