@@ -17,12 +17,12 @@
 <icon src="www/img/logo.png" />
 
 <gap:splash src="splash.9.png" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="ldpi" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="mdpi" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="hdpi" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="xhdpi" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="xxhdpi" />
-<gap:splash src="splash.9.png" gap:platform="android" gap:density="xxxhdpi" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:qualifier="ldpi" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:qualifier="mdpi" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:qualifier="hdpi" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:qualifier="xhdpi" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:qualifier="xxhdpi" />
+<gap:splash src="splash.9.png" gap:platform="android" gap:qualifier="xxxhdpi" />
 
 <content src="index.html" />
 <!-- Do not auto hide splash on iOS -->
