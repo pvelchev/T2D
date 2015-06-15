@@ -7,7 +7,7 @@
 	xmlns:gap = "http://phonegap.com/ns/1.0"
 	xmlns:android = "http://schemas.android.com/apk/res/android"
 >
-<name>Take Me To Dinner A4</name>
+<name>Take Me To Dinner AB</name>
 <description>
 	Mobile app for Take Me to dinner site.
 </description>
@@ -17,6 +17,7 @@
 <icon src="www/img/logo.png" />
 
 <gap:splash src="splash.9.png" />
+<gap:splash src="res/drawable-ldpi/splash.9.png" gap:platform="android" gap:density="ldpi" />
 <gap:splash src="res/drawable-mdpi/splash.9.png" gap:platform="android" gap:density="mdpi" />
 <gap:splash src="res/drawable-hdpi/splash.9.png" gap:platform="android" gap:density="hdpi" />
 <gap:splash src="res/drawable-xhdpi/splash.9.png" gap:platform="android" gap:density="xhdpi" />

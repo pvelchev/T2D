@@ -1,3 +1,21 @@
+function startTime() {
+    var today=new Date();
+    var h=today.getHours();
+    var m=today.getMinutes();
+    var s=today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('clock').innerHTML = h+":"+m+":"+s;
+    var t = setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i) {
+    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+
+
 var isConnected = false;
 var to_alert = true;
 var new_location;
@@ -22,6 +40,7 @@ function try_to_getGeolocation(){
 
 
 function onDeviceReady() { 
+	startTime();
 	document.addEventListener("backbutton", function (e) {
         alert('Please use Exit button to close application');
 	},
